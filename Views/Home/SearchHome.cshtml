@@ -1,0 +1,51 @@
+@model NICodeExercise.ViewModels.SearchVM 
+@if(!Model.SearchPerformed){
+<div class="greeting container">
+    <h1>Hello</h1>
+    <h4>Type an address to get started</h4>
+</div>
+}
+<div class="form-container">
+    @using(Html.BeginForm("Search", "Home", FormMethod.Get)) {
+    <div class="container">
+        <div class="col-md-5">
+            <div class="input-group">
+                <input class="form-control" name="address" placeholder="Street Address..." value="@(Model.SearchResults != null ? Model.SearchResults.request.address : string.Empty)">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" aria-label="Help" data-toggle="tooltip" data-html="true" data-placement="top"
+                        title="Enter Address here. </br> ex. 123 Sesame st.">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="input-group">
+                <input class="form-control" name="cityStateZip" placeholder="City, State and/or Zip"value="@(Model.SearchResults != null ? Model.SearchResults.request.citystatezip : string.Empty )">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" aria-label="Help" data-toggle="tooltip" data-html="true" data-placement="top"
+                        title="Enter City, State and/or Zip Code here. ex: <ul><li>Seattle, WA,98109</li><li>Seattle, WA</li><li>98109</li><ul>">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 search-button-container">
+            <input type="submit" name="submit" value="Search" class="center-block btn btn-primary">
+        </div>
+    </div>
+    }
+</div>
+@if(@Model.SearchPerformed){
+<main class="container">
+    @{int zillowStatusCode; 
+     Int32.TryParse(Model.SearchResults.message.code, out zillowStatusCode);}
+    @if(zillowStatusCode != 0){
+        <div class="alert alert-danger error-message">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            @Model.SearchResults.message.text</div>
+    }
+    
+    @if (Model.SearchResults != null && zillowStatusCode == 0) { @Html.Partial("Search", @Model.SearchResults) }
+</main>
+}

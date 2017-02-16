@@ -1,0 +1,34 @@
+@model NICodeExercise.Models.searchresults
+
+<div class="col-xs-12" style="display: none">
+    <text>@Model.request.address</text>,
+    <text>@Model.request.citystatezip</text>
+</div>
+
+<div class="jumbotron">
+  <h1>@Model.response.results[0].address.street</h1>
+  <p>@Model.response.results[0].address.city, @Model.response.results[0].address.state, @Model.response.results[0].address.zipcode </p>
+  <p><a class="btn btn-primary btn-lg" href="@(Model.response.results[0].links.homedetails)" role="button">Learn more</a></p>
+</div>
+<ul class="list-group col-md-4">
+    <li class="list-group-item active">Zestimates</li>
+    <li class="list-group-item">@string.Format("Current est. Cost: {0:C} {1}",Model.response.results[0].zestimate.amount.Value,Model.response.results[0].zestimate.amount.currency )</li>
+    <li class="list-group-item">@string.Format("Valuation Cost Range: {0:C} {1} - {2:C} {3}",Model.response.results[0].zestimate.valuationRange.low.Value,
+                                                                                     Model.response.results[0].zestimate.valuationRange.low.currency,
+                                                                                     Model.response.results[0].zestimate.valuationRange.high.Value,
+                                                                                     Model.response.results[0].zestimate.valuationRange.high.currency )</li>
+</ul>
+
+<ul class="list-group col-md-4">
+    <li class="list-group-item active">Useful Links</li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].links.graphsanddata)">Graphs and Data</a></li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].links.mapthishome)">Map This Home</a></li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].links.comparables)">Comparables</a></li>
+</ul>
+
+<ul class="list-group col-md-4">
+    <li class="list-group-item active">@string.Format("Local Real Estate for the {0} of {1}.", Model.response.results[0].localRealEstate[0].type, Model.response.results[0].localRealEstate[0].name )</li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].localRealEstate[0].links.overview)">Area Overview</a></li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].localRealEstate[0].links.forSale)">For Sale</a></li>
+    <li class="list-group-item"><a href="@(Model.response.results[0].localRealEstate[0].links.forSaleByOwner)">For Sale by Owner</a></li>
+</ul>

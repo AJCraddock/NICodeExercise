@@ -1,0 +1,49 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px
+}
+
+.greeting {
+    text-align: center;
+}
+
+.error-message {
+    text-align: -webkit-center;
+    text-align: center;
+    color: red;
+}
+
+.form-container {
+    width: 100%;
+    background: lightgray;
+    padding: 18px 0;
+}
+
+.tooltip-inner {
+    max-width: 350px;
+    width: 130px;
+}
+
+.tooltip-inner ul {
+    text-align: left;
+}
+
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4
+}
+
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%
+}
+
+@media screen and (max-width:767px) {
+    .carousel-caption {
+        display: none
+    }
+}
