@@ -3,12 +3,12 @@
 
 ## This application consists of:
 
-*   ASP.NET Core MVC app that taps into Zillow API to show information given a home address
+*   ASP.NET Core MVC app that taps into Zillow API to show information given+ a home address
 *   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
 *   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
 
 ## How to build
-*   Pull repo down 
+*   Clone repo 
 *   Run 'bower install' from directory that has bower.json file in application
 *   Then run 'dotnet restore' to collect required NuGet packages
 *   Then run 'dotnet build' just to ensure most recent .dll was generated. During dev, ran
