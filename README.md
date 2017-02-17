@@ -3,7 +3,7 @@
 
 ## This application consists of:
 
-*   ASP.NET Core MVC app that taps into Zillow API to show information given+ a home address
+*   ASP.NET Core MVC app  that taps into Zillow API to show information given+ a home address (dotnet ver. 1.0.0-rc3-004530)
 *   [Bower](https://go.microsoft.com/fwlink/?LinkId=518004) for managing client-side libraries
 *   Theming using [Bootstrap](https://go.microsoft.com/fwlink/?LinkID=398939)
 
